@@ -1,0 +1,104 @@
+<app-rh-navbar></app-rh-navbar>
+<div class="container" style="margin-top: 35px">
+  <div class="row">
+      <table class=" table btn-table table-active table-responsive-md ">
+          <thead> 
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>LastName</th>
+              <th>JobTiltle</th>
+              <th>Cv</th>
+              <th>Quizz</th>
+              <th>#</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let candidate of candidates">
+              <td>
+                  <img [src]="getImageUrl(candidate)" alt="{{candidate?.photo}}" class="rounded " width="50px" height="50px" />
+              </td>
+              <td>
+                {{candidate?.name}}
+              </td>
+              <td>
+                {{candidate?.lastname}}
+              </td>
+              <td> 
+                {{candidate?.jobtitle}}
+              </td>
+              <td>
+                <button class="btn btn-info btn-sm" (click)="getCv(candidate)" >Open</button>
+              </td>
+              <td>
+                <button class="btn btn-unique btn-sm" (click)="openQuizzSender(quizz, candidate)" >Send</button>
+              </td>
+              <td>
+                <button class="btn btn-danger btn-sm" (click)="open(mailer, candidate)" >Convocate</button>
+              </td>
+            </tr>
+          </tbody>
+        </table> 
+        <ng-template #mailer let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title">mail sender</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+                <p> <strong>Candidate</strong> <input type="text" class="form-control" value="{{currentCandidate.name}} {{currentCandidate.lastname}}" readonly></p>
+            </div>
+            <div class="form-group">
+              <p> <strong>Job</strong> <input type="text" class="form-control" value="{{currentCandidate.jobtitle}}" readonly></p>
+            </div>
+            <div class="form-group">
+              <p> <strong>Subject</strong> <input type="text" class="form-control" [(ngModel)]="subject" #ctrl="ngModel" placeholder="subject"></p>
+            </div>
+            <div class="form-group">
+              <p> <strong>Body</strong> <textarea [(ngModel)]="body" #ctrl="ngModel" class="form-control"></textarea></p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="c('Close click')">Send</button>
+          </div>
+        </ng-template>
+      
+        <ng-template #quizz let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title">Quizz List</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class=" table btn-table table-active table-responsive-md ">
+              <thead> 
+                <tr>
+                  <th>Quizz</th>
+                  <th>Technology</th>
+                  <th>#</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let quiz of quizzs">
+                  <td>
+                    {{quiz.title}}
+                  </td>
+                  <td>
+                    {{quiz.technlogie}}
+                  </td>
+                  <td>
+                    <button class="btn btn-danger btn-sm" (click)="sendQuizz(quiz, $event)" >Send</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>    
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="c('Close click')">Done</button>
+          </div>
+        </ng-template>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light changed-color orange lighten-4 ">
+  <a class="navbar-brand" routerLink="/rh/profil">
+    RH management
+  </a>
+    <!-- Collapse button -->
+  <div class="collapse navbar-collapse">
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+          <a style="color:#9A2828" class="nav-link" [matMenuTriggerFor]="offreMenu" >Offre</a>
+          <mat-menu #offreMenu="matMenu">
+              <button mat-menu-item (click)="createOffre()" >Create</button>
+              <button mat-menu-item (click)="showOffres()" >Show</button>
+          </mat-menu>
+      </li> 
+      <li class="nav-item">
+          <a style="color:#9A2828" class="nav-link" routerLink="/rh/candidates" >Cv DB</a>
+      </li> 
+      <li class="nav-item">
+        <a style="color:#9A2828" class="nav-link" routerLink="/rh/quiz" >Quizz</a>
+      </li> 
+      <li class="nav-item" style="margin-left:25em;">
+        <strong class="nav-link " style="color:#9A2828"> RH space </strong>
+      </li>
+    </ul>
+  </div>  
+  
+  <div class="menu">
+    <span><a><img id="user-image" src="{{imageUrl}}" mat-button [matMenuTriggerFor]="menu"
+      width="40" alt="" class="rounded-circle img-fluid"></a></span>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item class="dropdown-item" (click)=" goProfile()" >
+        <p>
+            <img id="user-image" src="{{imageUrl}}" width="20"  class="rounded-circle img-fluid">
+            {{employee?.username | titlecase}} 
+        </p>
+      </button>
+      
+      <button  mat-menu-item class="dropdown-item" (click)=" goSettings()" > 
+        Settings
+      </button>
+        
+      <button  mat-menu-item class="dropdown-item" (click)="disconnect()">
+        LogOut
+      </button>
+    </mat-menu>
+  </div>
+ 
+</nav>
