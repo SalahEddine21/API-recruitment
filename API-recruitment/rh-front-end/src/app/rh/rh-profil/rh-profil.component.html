@@ -1,0 +1,29 @@
+<app-rh-navbar></app-rh-navbar>
+<div class="container" style="margin-top: 25px">
+    <div class="row">
+        <div class="col-md-4 offset-md-5">
+            <img id="user-image" src="{{imageUrl}}" mat-button width="150" alt="{{employee.name}}" class="rounded-circle img-fluid">
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 35px">
+        <div class="col-md-6 offset-md-3">
+            <legend>Personnal informations</legend>
+            <mat-list>
+                    <mat-divider></mat-divider>
+                    <mat-list-item><p><label>Name: </label> {{employee.name}} </p></mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item><p><label>Lastname: </label> {{employee.lastname}} </p></mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item><p><label>Email: </label> {{employee.email}} </p></mat-list-item> 
+                    <mat-divider></mat-divider>
+                    <mat-list-item><p><label>Phone: </label> {{employee.phone}} </p></mat-list-item>   
+            </mat-list>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <p>Work at {{employee.entreprise.name}} company</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<app-rh-navbar></app-rh-navbar>
+<div class="container">
+  <div class="col-sm-12" style="margin-top: 35px">
+    <div class="col-sm-8 offset-sm-2">
+      <table class=" table btn-table table-active table-responsive-md ">
+        <thead> 
+          <tr>
+            <th>Part</th>
+            <th>Score</th>
+            <th>%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of results">
+            <td> {{result[0]}} </td>
+            <td> {{result[1]}} </td>
+            <td> {{result[2]}} </td>
+          </tr>
+        </tbody>
+      </table>    
+    </div>
+  </div>
+</div>

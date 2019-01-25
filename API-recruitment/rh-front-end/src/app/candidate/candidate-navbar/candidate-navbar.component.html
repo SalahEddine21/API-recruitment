@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-light changed-color orange lighten-4 ">
+  <a class="navbar-brand" routerLink="/candidate/profil">
+    Candidate
+  </a>
+    <!-- Collapse button -->
+  <div class="collapse navbar-collapse">
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+          <a style="color:#9A2828" class="nav-link" routerLink="/offres" >Offres</a>
+      </li> 
+      <li class="nav-item">
+        <a style="color:#9A2828" class="nav-link" routerLink="/candidate/applications" >Applications</a>
+      </li> 
+      <li class="nav-item">
+        <a style="color:#9A2828" class="nav-link" routerLink="/candidate/quizz" >Quizz</a>
+      </li> 
+      <li class="nav-item" style="margin-left:25em;">
+        <strong class="nav-link " style="color:#9A2828"> Candidate space </strong>
+      </li>
+    </ul>
+  </div>  
+  
+  <div class="menu">
+    <span><a><img id="user-image" src="{{imageUrl}}" mat-button [matMenuTriggerFor]="menu"
+      width="25" alt="" class="rounded-circle img-fluid"></a></span>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item class="dropdown-item" (click)=" goProfile()" >
+        <p>
+            <img id="user-image" src="{{imageUrl}}" width="20"  class="rounded-circle img-fluid">
+            {{candidate?.username | titlecase}} 
+        </p>
+      </button>
+      
+      <button  mat-menu-item class="dropdown-item" (click)=" goSettings()" > 
+        Settings
+      </button>
+        
+      <button  mat-menu-item class="dropdown-item" (click)="disconnect()">
+        LogOut
+      </button>
+    </mat-menu>
+  </div>
+ 
+</nav>
